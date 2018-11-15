@@ -113,6 +113,6 @@ void Player::jump()
 	if (grounded)
 	{
 		grounded = false;
-		velocity.y = -jumpForce;
+		velocity.y = -jump_velocity;
 	}
 }

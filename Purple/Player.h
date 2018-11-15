@@ -14,11 +14,11 @@ private:
 	float horizontalAccelerationDown = 0.003; // Horizontal acceleration when slowing down
 	float horizontalSpeedCap = 0.17; // Maximum horizontal speed
 
-	float jump_height; // Height in tex_sizes
-	float jump_time; // Time to reach maximum trajectory height in milliseconds
+	float jump_height = 4.1; // Height in tex_sizes
+	sf::Time jump_time = sf::Time(sf::milliseconds(800)); // Time to reach maximum trajectory height
 
-	float gravity = 0.0005; // Gravitational acceleration
-	float jump_velocity = 0.36; // Initial jump velocity
+	float gravity = 2 * jump_height*tex_size / jump_time.asMilliseconds() / jump_time.asMilliseconds(); // Gravitational acceleration
+	float jump_velocity = 2 * jump_height*tex_size / jump_time.asMilliseconds(); // Initial jump velocity
 
 	bool grounded = true; // Is the player standing on ground
 
