@@ -6,6 +6,8 @@
 class Player: public sf::Sprite // represents a player
 {
 private:
+	sf::Texture player_texture;
+
 	sf::Vector2i size;
 	sf::Vector2f velocity = { 0, 0 };
 	sf::Vector2f acceleration = { 0, 0 };
@@ -29,7 +31,7 @@ private:
 	void jump();
 
 public:
-	Player(sf::Vector2i m_size, sf::Vector2f m_position, sf::Texture &tex);
+	Player(sf::Vector2i m_size, sf::Vector2f m_position, std::string texture_file);
 	
 	// Updates player position
 	void update(bool right, bool left, bool up, std::vector<sf::Sprite> platforms, int elapsed_time);

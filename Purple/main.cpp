@@ -8,16 +8,9 @@
 
 int main()
 {
-	// Create and load the textures
-	sf::Texture player_tex;
-	player_tex.loadFromFile("purple2.png");
-	sf::Texture tile_tex;
-	tile_tex.loadFromFile("tile2.png");
-
 	// Create Player and Level
-	Level level1 = Level(tile_tex);
-	level1.loadFromImage("level1.png");
-	Player player = Player({ 2, 2 }, { 1, 1 }, player_tex);
+	Level level1 = Level("level1.png", "tile2.png");
+	Player player = Player({ 2, 2 }, { 1, 1 }, "purple2.png");
 
 	sf::View view;
 	view.setSize(tex_size * 16 * 2, tex_size * 9 * 2);
@@ -38,31 +31,22 @@ int main()
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
-			if (event.type == sf::Event::Closed)
-				window.close();
-
-			else if (event.type = sf::Event::KeyPressed)
+			switch (event.type)
 			{
-				switch (event.key.code)
-				{
-				case sf::Keyboard::Q:
+				case sf::Event::Closed:
+					window.close();
 					break;
 
-				default:
-					break;
-				}
-			}
+				case sf::Event::KeyPressed:
+					switch (event.key.code)
+					{
+						case sf::Keyboard::Escape:
+							window.close();
+							break;
 
-			else if (event.type = sf::Event::KeyReleased)
-			{
-				switch (event.key.code)
-				{
-				case sf::Keyboard::Q:
-					break;
-
-				default:
-					break;
-				}
+						default:
+							break;
+					}
 			}
 		}
 

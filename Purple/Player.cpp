@@ -1,13 +1,14 @@
 #include "Player.h"
 
-Player::Player(sf::Vector2i m_size, sf::Vector2f position, sf::Texture &tex)
+Player::Player(sf::Vector2i m_size, sf::Vector2f position, std::string texture_file)
 	: size(m_size)
 {
-	setTexture(tex);
+	player_texture.loadFromFile(texture_file);
+	setTexture(player_texture);
 	setTextureRect(sf::IntRect(0, 0, tex_size, tex_size));
+
 	setPosition(position.x * tex_size, position.y * tex_size);
 	setScale(size.x, size.y);
-	std::cout << size.x << ' ' << size.y << ' ' << tex_size << std::endl;
 }
 
 
