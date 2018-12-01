@@ -5,14 +5,13 @@ Player::Player(sf::Vector2i m_size, sf::Vector2f position, std::string texture_f
 {
 	player_texture.loadFromFile(texture_file);
 	setTexture(player_texture);
-	setTextureRect(sf::IntRect(0, 0, tex_size, tex_size));
 
 	setPosition(position.x * tex_size, position.y * tex_size);
 	setScale(size.x, size.y);
 }
 
 
-void Player::collide(std::vector<sf::Sprite> platforms, sf::Vector2f vel)
+void Player::collide(std::vector<Entity> platforms, sf::Vector2f vel)
 {
 	sf::Vector2f temp_pos = getPosition();
 
@@ -20,7 +19,7 @@ void Player::collide(std::vector<sf::Sprite> platforms, sf::Vector2f vel)
 	{
 		sf::FloatRect rect = platforms[i].getGlobalBounds();
 
-		if (getGlobalBounds().intersects(rect))
+		if (getGlobalBounds().intersects(rect) && platforms[i].solid)
 		{
 			if (vel.x > 0)
 			{
@@ -51,7 +50,7 @@ void Player::collide(std::vector<sf::Sprite> platforms, sf::Vector2f vel)
 }
 
 
-void Player::update(bool left, bool right, bool up, std::vector<sf::Sprite> platforms, int elapsed_time)
+void Player::update(bool left, bool right, bool up, std::vector<Entity> platforms, int elapsed_time)
 {
 	if (!jerky)
 	{

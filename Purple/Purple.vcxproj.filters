@@ -24,6 +24,9 @@
     <ClCompile Include="Level.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.h">
@@ -33,6 +36,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Level.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -50,6 +56,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="purple2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="tile_hidden.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
