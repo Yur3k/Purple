@@ -2,19 +2,35 @@
 
 Level::Level(std::string map_image_file, std::string block_texture_file, std::string hidden_texture_file, std::string spike_texture_file)
 {
-	map.loadFromFile(map_image_file);
 	block_texture.loadFromFile(block_texture_file);
 	hidden_texture.loadFromFile(hidden_texture_file);
 	spike_texture.loadFromFile(spike_texture_file);
+	finish_texture.loadFromFile("finish.png");
+
+	map.loadFromFile(map_image_file);
 	size = map.getSize();
+
+	for (float i = 0; i < size.x; i++)
+		for (float j = 0; j < size.y; j++)
+		{
+			if (map.getPixel(i, j) == sf::Color(100, 0, 0, 255))
+				spawn = { i, j };
+			else if (map.getPixel(i, j) == sf::Color(0, 0, 100, 255))
+			{
+				Entity finish_entity(false, false, false);
+				finish_entity.setTexture(finish_texture);
+				finish_entity.setPosition(i * tex_size, j * tex_size);
+				finish.push_back(finish_entity);
+				entities.push_back(finish_entity);
+			}
+		}
+
 	update();	
 }
 
 
 void Level::update()
 {
-	entities.clear();
-
 	for (int i = 0; i < size.x; i++)
 		for (int j = 0; j < size.y; j++)
 		{

@@ -10,7 +10,7 @@ int main()
 {
 	// Create Player and Level
 	Level level1 = Level("level2.png", "tile2.png", "tile_hidden.png", "spike.png");
-	Player player = Player({ 2, 2 }, { 1, 1 }, "purple2.png");
+	Player player = Player({ 2, 2 }, level1.spawn, "purple2.png");
 	
 	// Create window and view
 	sf::View view;
@@ -61,6 +61,11 @@ int main()
 			sf::Keyboard::isKeyPressed(sf::Keyboard::Right),
 			sf::Keyboard::isKeyPressed(sf::Keyboard::Space),
 			level1.entities, frame_time.asMilliseconds());
+
+
+		for (int i = 0; i < level1.finish.size(); i++)
+			if (player.getGlobalBounds().intersects(level1.finish[i].getGlobalBounds()))
+				window.close();
 
 		// Center the view around the player and check that it doesn't show anything outside the level
 		sf::Vector2f view_center = player.getPosition();

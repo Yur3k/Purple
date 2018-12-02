@@ -22,13 +22,13 @@ private:
 	float horizontalAccelerationDown = 0.003;
 	
 	// Maximum horizontal speed
-	float horizontalSpeedCap = 0.6;
+	float horizontalSpeedCap = 0.4;
 
 	// Height in tex_sizes
 	float jump_height = 10;
 
 	// Time to reach maximum trajectory height
-	sf::Time jump_time = sf::Time(sf::milliseconds(1000));
+	sf::Time jump_time = sf::Time(sf::milliseconds(900));
 
 	// Gravitational acceleration
 	float gravity = 2 * jump_height*tex_size / jump_time.asMilliseconds() / jump_time.asMilliseconds();

@@ -67,6 +67,9 @@
     <Image Include="spike.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="finish.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Text Include="level1.txt" />
