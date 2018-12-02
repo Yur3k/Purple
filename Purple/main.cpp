@@ -9,12 +9,12 @@
 int main()
 {
 	// Create Player and Level
-	Level level1 = Level("level1.png", "tile2.png", "tile_hidden.png");
+	Level level1 = Level("level2.png", "tile2.png", "tile_hidden.png", "spike.png");
 	Player player = Player({ 2, 2 }, { 1, 1 }, "purple2.png");
 	
 	// Create window and view
 	sf::View view;
-	view.setSize(tex_size * 16 * 2, tex_size * 9 * 2);
+	view.setSize(tex_size * 16 * 5, tex_size * 9 * 5);
 	sf::RenderWindow window(sf::VideoMode(2560, 1440), "Purple", sf::Style::Fullscreen);
 	window.setVerticalSyncEnabled(true);
 
@@ -73,7 +73,7 @@ int main()
 		view_center.y = std::min((float)level1.size.y * tex_size, view_center.y + view.getSize().y / 2) - view.getSize().y / 2;
 
 		view.setCenter(view_center);
-					window.setView(view);
+		window.setView(view);
 
 		// Clear the window and draw all the entities
 		window.clear();
@@ -81,6 +81,9 @@ int main()
 			window.draw(level1.entities[i]);
 		window.draw(player);
 		window.display();
+
+		if (!player.alive)
+			break;
 	}
 
 	return 0;

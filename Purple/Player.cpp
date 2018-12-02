@@ -47,11 +47,20 @@ void Player::collide(std::vector<Entity> platforms, sf::Vector2f vel)
 	}
 
 	setPosition(temp_pos);
+
+	for (int i = 0; i < platforms.size(); i++)
+		if (getGlobalBounds().intersects(platforms[i].getGlobalBounds()) && platforms[i].deadly)
+		{
+			alive = false;
+		}
 }
 
 
 void Player::update(bool left, bool right, bool up, std::vector<Entity> platforms, int elapsed_time)
 {
+	if (!alive)
+		return;
+
 	if (!jerky)
 	{
 		if (left && !right)
@@ -74,7 +83,7 @@ void Player::update(bool left, bool right, bool up, std::vector<Entity> platform
 			acceleration.x = 0;
 
 			if (grounded)
-				velocity.x *= 0.95;
+				velocity.x *= 0.93;
 		}
 	}
 	

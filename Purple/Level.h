@@ -16,6 +16,9 @@ private:
 	// Texture used for hidden blocks
 	sf::Texture hidden_texture;
 
+	// Texture used for spikes
+	sf::Texture spike_texture;
+
 	// Layout of the level in image form
 	sf::Image map; 
 
@@ -23,7 +26,7 @@ private:
 	int world = 0; 
 
 public:
-	Level(std::string map_image_file, std::string block_texture_file, std::string hidden_texture_file);
+	Level(std::string map_image_file, std::string block_texture_file, std::string hidden_texture_file, std::string spike_texture_file);
 
 	// Changes the level map
 	void flip(int to);

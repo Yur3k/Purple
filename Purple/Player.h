@@ -4,29 +4,31 @@
 #include "Entity.h"
 #include "constants.h"
 
-class Player: public sf::Sprite // represents a player
+// Represents a player
+class Player: public sf::Sprite
 {
 private:
+	// Texture used for the player
 	sf::Texture player_texture;
 
 	sf::Vector2i size;
 	sf::Vector2f velocity = { 0, 0 };
 	sf::Vector2f acceleration = { 0, 0 };
 
-	// Horizontal when speeding up
+	// Horizontal acceleration when speeding up
 	float horizontalAccelerationUp = 0.001;
 	
 	// Horizontal acceleration when slowing down
 	float horizontalAccelerationDown = 0.003;
 	
 	// Maximum horizontal speed
-	float horizontalSpeedCap = 0.17;
+	float horizontalSpeedCap = 0.6;
 
 	// Height in tex_sizes
-	float jump_height = 4.1;
+	float jump_height = 10;
 
 	// Time to reach maximum trajectory height
-	sf::Time jump_time = sf::Time(sf::milliseconds(800));
+	sf::Time jump_time = sf::Time(sf::milliseconds(1000));
 
 	// Gravitational acceleration
 	float gravity = 2 * jump_height*tex_size / jump_time.asMilliseconds() / jump_time.asMilliseconds();
@@ -48,5 +50,8 @@ public:
 	
 	// Updates player position
 	void update(bool right, bool left, bool up, std::vector<Entity> platforms, int elapsed_time);
+
+	// Is the player alive
+	bool alive = true;
 };
 

@@ -61,6 +61,12 @@
     <Image Include="tile_hidden.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="level2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="spike.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Text Include="level1.txt" />
