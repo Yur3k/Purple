@@ -1,13 +1,29 @@
 #include "Player.h"
 
-Player::Player(sf::Vector2i m_size, sf::Vector2f position, std::string texture_file)
-	: size(m_size)
+
+Player::Player()
+{
+}
+
+
+Player::Player(std::string texture_file)
 {
 	player_texture.loadFromFile(texture_file);
 	setTexture(player_texture);
-
-	setPosition(position.x * tex_size, position.y * tex_size);
 	setScale(size.x, size.y);
+}
+
+
+void Player::setPos(sf::Vector2f pos)
+{
+	setPosition(pos.x * tex_size, pos.y * tex_size);
+}
+
+void Player::bind(sf::Keyboard::Key m_left_key, sf::Keyboard::Key m_right_key, sf::Keyboard::Key m_jump_key)
+{
+	left_key = m_left_key;
+	right_key = m_right_key;
+	jump_key = m_jump_key;
 }
 
 
@@ -56,8 +72,12 @@ void Player::collide(std::vector<Entity> platforms, sf::Vector2f vel)
 }
 
 
-void Player::update(bool left, bool right, bool up, std::vector<Entity> platforms, int elapsed_time)
+void Player::update(std::vector<Entity> platforms, int elapsed_time)
 {
+	bool left = sf::Keyboard::isKeyPressed(left_key);
+	bool right = sf::Keyboard::isKeyPressed(right_key);
+	bool jump = sf::Keyboard::isKeyPressed(jump_key);
+
 	if (!alive)
 		return;
 
@@ -112,12 +132,12 @@ void Player::update(bool left, bool right, bool up, std::vector<Entity> platform
 	move(0, velocity.y * elapsed_time);
 	collide(platforms, { 0, velocity.y });
 
-	if (up)
-		jump();
+	if (jump)
+		jmp();
 }
 
 
-void Player::jump()
+void Player::jmp()
 {
 	if (grounded)
 	{

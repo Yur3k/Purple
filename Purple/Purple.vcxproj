@@ -119,6 +119,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -126,6 +127,7 @@
   <ItemGroup>
     <ClInclude Include="constants.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="GameScene.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="Player.h" />
   </ItemGroup>
@@ -133,12 +135,12 @@
     <Image Include="finish.png" />
     <Image Include="level2.png" />
     <Image Include="spike.png" />
-    <Image Include="tile_hidden.png" />
-    <Image Include="purple2.png" />
-    <Image Include="tile2.png" />
-    <Image Include="level1.png" />
-    <Image Include="tile.png" />
+    <Image Include="block_hidden.png" />
     <Image Include="purple.png" />
+    <Image Include="block.png" />
+    <Image Include="level1.png" />
+    <Image Include="block0.png" />
+    <Image Include="purple0.png" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="level1.txt" />

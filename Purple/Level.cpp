@@ -1,20 +1,35 @@
 #include "Level.h"
 
-Level::Level(std::string map_image_file, std::string block_texture_file, std::string hidden_texture_file, std::string spike_texture_file)
+
+Level::Level()
 {
-	block_texture.loadFromFile(block_texture_file);
-	hidden_texture.loadFromFile(hidden_texture_file);
-	spike_texture.loadFromFile(spike_texture_file);
+}
+
+
+Level::Level(std::string map_image_file)
+{
+	block_texture.loadFromFile("block.png");
+	hidden_texture.loadFromFile("block_hidden.png");
+	spike_texture.loadFromFile("spike.png");
 	finish_texture.loadFromFile("finish.png");
 
 	map.loadFromFile(map_image_file);
 	size = map.getSize();
+
+	update();	
+}
+
+
+void Level::update()
+{
+	entities.clear();
 
 	for (float i = 0; i < size.x; i++)
 		for (float j = 0; j < size.y; j++)
 		{
 			if (map.getPixel(i, j) == sf::Color(100, 0, 0, 255))
 				spawn = { i, j };
+
 			else if (map.getPixel(i, j) == sf::Color(0, 0, 100, 255))
 			{
 				Entity finish_entity(false, false, false);
@@ -25,12 +40,6 @@ Level::Level(std::string map_image_file, std::string block_texture_file, std::st
 			}
 		}
 
-	update();	
-}
-
-
-void Level::update()
-{
 	for (int i = 0; i < size.x; i++)
 		for (int j = 0; j < size.y; j++)
 		{

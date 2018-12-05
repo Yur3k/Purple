@@ -9,8 +9,10 @@
 int main()
 {
 	// Create Player and Level
-	Level level1 = Level("level2.png", "tile2.png", "tile_hidden.png", "spike.png");
-	Player player = Player({ 2, 2 }, level1.spawn, "purple2.png");
+	Level level1 = Level("level2.png");
+	Player player = Player("purple.png");
+	player.setPos(level1.spawn);
+	player.bind(sf::Keyboard::Left, sf::Keyboard::Right, sf::Keyboard::Space);
 	
 	// Create window and view
 	sf::View view;
@@ -57,10 +59,7 @@ int main()
 			level1.flip(0);
 
 		// Update the player
-		player.update(sf::Keyboard::isKeyPressed(sf::Keyboard::Left),
-			sf::Keyboard::isKeyPressed(sf::Keyboard::Right),
-			sf::Keyboard::isKeyPressed(sf::Keyboard::Space),
-			level1.entities, frame_time.asMilliseconds());
+		player.update(level1.entities, frame_time.asMilliseconds());
 
 
 		for (int i = 0; i < level1.finish.size(); i++)
