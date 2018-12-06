@@ -10,6 +10,14 @@ Level::Level(std::string map_image_file, std::string block_texture_file, std::st
 	map.loadFromFile(map_image_file);
 	size = map.getSize();
 
+	update();	
+}
+
+
+void Level::update()
+{
+	entities.clear();
+
 	for (float i = 0; i < size.x; i++)
 		for (float j = 0; j < size.y; j++)
 		{
@@ -25,12 +33,6 @@ Level::Level(std::string map_image_file, std::string block_texture_file, std::st
 			}
 		}
 
-	update();	
-}
-
-
-void Level::update()
-{
 	for (int i = 0; i < size.x; i++)
 		for (int j = 0; j < size.y; j++)
 		{
