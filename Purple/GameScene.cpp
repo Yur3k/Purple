@@ -7,7 +7,7 @@ GameScene::GameScene()
 	level = Level("level" + std::to_string(level_num) + ".png");
 
 	// Create the player at the level spawn
-	player = Player("purple2.png");
+	player = Player("purple.png");
 }
 
 
