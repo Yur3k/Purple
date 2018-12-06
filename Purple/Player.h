@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <cmath>
 #include <SFML/Graphics.hpp>
 #include "Entity.h"
 #include "constants.h"
@@ -23,6 +24,9 @@ private:
 	
 	// Maximum horizontal speed
 	float horizontalSpeedCap = 0.4;
+
+	// Minimum horizontal velocity (player stops completely if slower)
+	float horizontalSpeedMin = 0.02;
 
 	// Height in tex_sizes
 	float jump_height = 10;

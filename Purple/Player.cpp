@@ -126,6 +126,9 @@ void Player::update(std::vector<Entity> platforms, int elapsed_time)
 	velocity.x = fmin(horizontalSpeedCap, velocity.x);
 	velocity.x = fmax(-horizontalSpeedCap, velocity.x);
 
+	if (abs(velocity.x) < horizontalSpeedMin && !left && !right)
+		velocity.x *= 0.8;
+
 	grounded = false;
 	move(velocity.x * elapsed_time, 0);
 	collide(platforms, { velocity.x, 0 });

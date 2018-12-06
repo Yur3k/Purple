@@ -1,6 +1,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <SFML/System/Clock.hpp>
+#include "GameScene.h"
 #include "Player.h"
 #include "Level.h"
 #include "constants.h"
