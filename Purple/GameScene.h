@@ -17,7 +17,7 @@ private:
 	sf::View player_view;
 
 	// Center of the view which shows the player
-	sf::Vector2f player_view_center;
+	sf::Vector2f view_center;
 
 	// Level of the scene
 	Level level;
@@ -32,7 +32,7 @@ private:
 	bool paused = false;
 
 	// Current Level number
-	int level_num = 1;
+	int level_num = 2;
 
 	// Clock that counts the time since last frame
 	sf::Clock frame_clock;

@@ -53,8 +53,11 @@ int main()
 		game_scene.render(game_render);
 
 		// Draw the rendered scene
-		sf::Sprite render_sprite(game_render.getTexture());
-		window.draw(render_sprite);
+		sf::Sprite temp_sprite(game_render.getTexture());
+		window.draw(temp_sprite);
+
+		// Display the window
+		window.display();
 	}
 
 	return 0;

@@ -34,6 +34,10 @@ void GameScene::start()
 
 	// Set the size of the player view
 	player_view.setSize(tex_size * 16 * 5, tex_size * 9 * 5);
+
+	// Center the view around the player
+	view_center = player.getPosition();
+	view_center += { player.getLocalBounds().width / 2, player.getLocalBounds().height / 2 };
 }
 
 
@@ -65,19 +69,28 @@ void GameScene::update()
 
 	// Update the player
 	player.update(level.entities, frame_clock.restart().asMilliseconds());
+	sf::Vector2f player_center = player.getPosition() + sf::Vector2f(player.getGlobalBounds().width / 2, player.getGlobalBounds().height / 2);
 
 	// Update the view center
-	player_view_center = player.getPosition();
-	player_view_center += { player.getLocalBounds().width / 2, player.getLocalBounds().height / 2 };
+	if (player_center.x - view_center.x > view.getSize().x / 4)
+		view_center.x = player_center.x - view.getSize().x / 4;
+	if (view_center.x - player_center.x > view.getSize().x / 4)
+		view_center.x = player_center.x + view.getSize().x / 4;
 
-	player_view_center.x = std::max(0.f, player_view_center.x - view.getSize().x / 2) + player_view.getSize().x / 2;
-	player_view_center.x = std::min((float)level.size.x * tex_size, player_view_center.x + player_view.getSize().x / 2) - player_view.getSize().x / 2;
+	if (player_center.y - view_center.y > view.getSize().y / 4)
+		view_center.y = player_center.y - view.getSize().y / 4;
+	if (view_center.y - player_center.y > view.getSize().y / 4)
+		view_center.y = player_center.y + view.getSize().y / 4;
 
-	player_view_center.y = std::max(0.f, player_view_center.y - view.getSize().y / 2) + view.getSize().y / 2;
-	player_view_center.y = std::min((float)level.size.y * tex_size, player_view_center.y + player_view.getSize().y / 2) - player_view.getSize().y / 2;
+	// Make sure the view doesn't show anything out of bounds
+	view_center.x = std::min(view_center.x, level.size.x * tex_size - view.getSize().x / 2);
+	view_center.x = std::max(view_center.x, view.getSize().x / 2);
+
+	view_center.y = std::min(view_center.y, level.size.y * tex_size - view.getSize().y / 2);
+	view_center.y = std::max(view_center.y, view.getSize().y / 2);
 
 	// Update the player view
-	player_view.setCenter(player_view_center);
+	player_view.setCenter(view_center);
 }
 
 

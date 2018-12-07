@@ -8,8 +8,7 @@ Player::Player()
 
 Player::Player(std::string texture_file)
 {
-	player_texture.loadFromFile(texture_file);
-	setTexture(player_texture);
+	player_texture.loadFromFile("purple.png");
 	setScale(size.x, size.y);
 }
 
@@ -74,6 +73,8 @@ void Player::collide(std::vector<Entity> platforms, sf::Vector2f vel)
 
 void Player::update(std::vector<Entity> platforms, int elapsed_time)
 {
+	setTexture(player_texture);
+
 	bool left = sf::Keyboard::isKeyPressed(left_key);
 	bool right = sf::Keyboard::isKeyPressed(right_key);
 	bool jump = sf::Keyboard::isKeyPressed(jump_key);
