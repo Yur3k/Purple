@@ -9,12 +9,13 @@
 class Level
 {
 private:
-	void update();
-
 	// Texture used for regular blocks
 	sf::Texture block_texture;
 
-	// Texture used for hidden blocks
+	// Texture used for flip blocks
+	sf::Texture flip_block_texture;
+
+	// Texture used for hidden flip blocks
 	sf::Texture hidden_texture;
 
 	// Texture used for spikes
@@ -30,13 +31,19 @@ private:
 	int world = 0;
 
 public:
-	Level(std::string map_image_file, std::string block_texture_file, std::string hidden_texture_file, std::string spike_texture_file);
+	// Default constructor
+	Level();
+
+	Level(std::string map_image_file);
 
 	// Player spawn point
 	sf::Vector2f spawn = { 0, 0 };
 
 	// Finish point
 	std::vector<Entity> finish;
+
+	// Updates the level
+	void update();
 
 	// Changes the level map
 	void flip(int to);

@@ -1,10 +1,17 @@
 #include "Level.h"
 
-Level::Level(std::string map_image_file, std::string block_texture_file, std::string hidden_texture_file, std::string spike_texture_file)
+
+Level::Level()
 {
-	block_texture.loadFromFile(block_texture_file);
-	hidden_texture.loadFromFile(hidden_texture_file);
-	spike_texture.loadFromFile(spike_texture_file);
+}
+
+
+Level::Level(std::string map_image_file)
+{
+	block_texture.loadFromFile("block.png");
+	flip_block_texture.loadFromFile("flip_block.png");
+	hidden_texture.loadFromFile("block_hidden.png");
+	spike_texture.loadFromFile("spike.png");
 	finish_texture.loadFromFile("finish.png");
 
 	map.loadFromFile(map_image_file);
@@ -23,6 +30,7 @@ void Level::update()
 		{
 			if (map.getPixel(i, j) == sf::Color(100, 0, 0, 255))
 				spawn = { i, j };
+
 			else if (map.getPixel(i, j) == sf::Color(0, 0, 100, 255))
 			{
 				Entity finish_entity(false, false, false);
@@ -36,11 +44,12 @@ void Level::update()
 	for (int i = 0; i < size.x; i++)
 		for (int j = 0; j < size.y; j++)
 		{
+			sf::Color block_color = map.getPixel(i, j);
 			Entity block(false, true, false);
 			block.setPosition(i * tex_size, j * tex_size);
 			block.setTextureRect(sf::IntRect(0, 0, tex_size, tex_size));
 			
-			if (map.getPixel(i, j).g == 255)
+			if (block_color.g == 255)
 			{
 				block.deadly = true;
 				block.solid = false;
@@ -48,17 +57,17 @@ void Level::update()
 				entities.push_back(block);
 			}
 
-			else if (map.getPixel(i, j).r == 255 && map.getPixel(i, j).b == 255)
+			else if (block_color.r == 255 && block_color.b == 255)
 			{
 				block.setTexture(block_texture);
 				entities.push_back(block);
 			}
 
-			else if (map.getPixel(i, j).r == 255)
+			else if (block_color.r == 255)
 			{
 				if (world == 0)
 				{
-					block.setTexture(block_texture);
+					block.setTexture(flip_block_texture);
 				}
 				else
 				{
@@ -69,11 +78,11 @@ void Level::update()
 				entities.push_back(block);
 			}
 
-			else if (map.getPixel(i, j).b == 255)
+			else if (block_color.b == 255)
 			{
 				if (world == 1)
 				{
-					block.setTexture(block_texture);
+					block.setTexture(flip_block_texture);
 				}
 				else
 				{

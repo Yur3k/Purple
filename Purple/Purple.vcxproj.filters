@@ -27,6 +27,12 @@
     <ClCompile Include="Entity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GameScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.h">
@@ -41,24 +47,18 @@
     <ClInclude Include="Entity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GameScene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="json.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="purple.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="tile.png">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="level1.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="tile2.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="purple2.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="tile_hidden.png">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="level2.png">
@@ -70,8 +70,26 @@
     <Image Include="finish.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="block_hidden.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="block0.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="block.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="purple.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="flip_block.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Text Include="level1.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="menu_buttons.json" />
   </ItemGroup>
 </Project>

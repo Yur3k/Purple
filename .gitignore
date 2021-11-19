@@ -260,6 +260,9 @@ paket-files/
 __pycache__/
 *.pyc
 
+# Alpha build??? idk
+Alpha0.1/
+
 # Binary
 *.exe
 *.dll
