@@ -50,6 +50,7 @@ void GameScene::pause()
 void GameScene::play()
 {
 	paused = false;
+	frame_clock.restart();
 }
 
 

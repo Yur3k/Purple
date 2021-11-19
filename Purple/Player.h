@@ -17,10 +17,10 @@ private:
 	sf::Vector2f acceleration = { 0, 0 };
 
 	// Horizontal acceleration when speeding up
-	float horizontalAccelerationUp = 0.001;
+	float horizontalAccelerationUp = 0.003;
 	
 	// Horizontal acceleration when slowing down
-	float horizontalAccelerationDown = 0.003;
+	float horizontalAccelerationDown = 0.006;
 	
 	// Maximum horizontal speed
 	float horizontalSpeedCap = 0.4;

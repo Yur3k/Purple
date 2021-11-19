@@ -103,8 +103,8 @@ void Player::update(std::vector<Entity> platforms, int elapsed_time)
 		{
 			acceleration.x = 0;
 
-			if (grounded)
-				velocity.x *= 0.93;
+			// if(grounded)
+			velocity.x *= 0.90;
 		}
 	}
 	

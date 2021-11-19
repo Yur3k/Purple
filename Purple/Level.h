@@ -12,7 +12,10 @@ private:
 	// Texture used for regular blocks
 	sf::Texture block_texture;
 
-	// Texture used for hidden blocks
+	// Texture used for flip blocks
+	sf::Texture flip_block_texture;
+
+	// Texture used for hidden flip blocks
 	sf::Texture hidden_texture;
 
 	// Texture used for spikes
