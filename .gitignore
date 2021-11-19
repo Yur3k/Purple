@@ -262,3 +262,7 @@ __pycache__/
 
 # Alpha build??? idk
 Alpha0.1/
+
+# Binary
+*.exe
+*.dll
